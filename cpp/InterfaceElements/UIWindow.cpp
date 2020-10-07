@@ -4,6 +4,7 @@
 UIWindow::UIWindow(float width, float height)
 {
     background.setSize(sf::Vector2(width,height));
+    canvas.create(width, height);
     /*circle.setRadius(20);
     circle.setFillColor(sf::Color::Red);
     circle.setOrigin(20, 20);

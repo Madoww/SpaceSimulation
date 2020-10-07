@@ -15,6 +15,8 @@ public:
 		return instance;
 	}
 	void run();
+    sf::Event event;
+    sf::RenderWindow& getWindow(){ return m_window; }
 private:
 	app();
 	~app()=default;

@@ -15,6 +15,7 @@ public:
         text.setFont(Fonts::Instance().default_font);
         text.setString(value);
         text.setCharacterSize(40);
+        text.setFillColor(sf::Color::Blue);
     }
     
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const

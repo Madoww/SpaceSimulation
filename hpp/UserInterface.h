@@ -21,7 +21,8 @@ public:
     }
     void Draw(sf::RenderWindow& window)
     {
-        window.draw(*windows[0]);
+        //window.draw(*windows[0]);
+        windows[0]->draw(window);
     }
     
     std::vector<UIWindow*> windows;
