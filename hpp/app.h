@@ -20,8 +20,8 @@ public:
 private:
 	app();
 	~app()=default;
+	UserInterface& interface = UserInterface::instance();
 	SpaceSystem& space = SpaceSystem::instance();
-    UserInterface& interface = UserInterface::instance();
 	sf::RenderWindow m_window;
 	sf::View view;
 };

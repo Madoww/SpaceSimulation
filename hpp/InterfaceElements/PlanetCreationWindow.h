@@ -8,29 +8,22 @@ class PlanetCreationWindow : public UIWindow
 {
 public:
     PlanetCreationWindow()
-    :UIWindow(150,150), button(20,20)
+    :UIWindow(150,150)
     {
         
-    }
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override
-    {
-        states.transform *= getTransform();
-        states.blendMode = sf::BlendMultiply;
-        target.draw(background);
-        target.draw(button,states);
     }
     
     void draw(sf::RenderWindow& window) override
     {
         canvas.clear(sf::Color::White);
-        canvas.draw(button);
+        canvas.draw(input);
         canvas.display();
         input.GatherInput(window);
         
-        sf::Sprite sprite(canvas.getTexture());
-        window.draw(sprite);
+		(canvas.getTexture());
+		finalRender.setTexture(canvas.getTexture());
+        window.draw(finalRender);
     }
-    UIButton button;
     UIInputField input;
 };
 

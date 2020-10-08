@@ -13,6 +13,7 @@ public:
 protected:
     sf::RectangleShape background;
     sf::RenderTexture canvas;
+	sf::Sprite finalRender;
 };
 
 

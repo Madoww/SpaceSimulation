@@ -6,7 +6,13 @@ void UIInputField::GatherInput(sf::RenderWindow& window)
 {
     if(app::instance().event.type == sf::Event::TextEntered)
     {
-        std::cout<<app::instance().event.text.unicode<<std::endl;
+		if (app::instance().event.text.unicode == '\b')
+		{
+			text.erase();
+			return;
+		}
+
+		text.append(app::instance().event.text.unicode);
     }
 }
 

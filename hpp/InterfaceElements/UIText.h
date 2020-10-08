@@ -23,6 +23,24 @@ public:
         states.transform *= getTransform();
         target.draw(text,states);
     }
+
+	void setText(const std::string& newValue)
+	{
+		value = newValue;
+		text.setString(value);
+	}
+
+	void append(const char addedValue)
+	{
+		value += addedValue;
+		text.setString(value);
+	}
+
+	void erase()
+	{
+		value.pop_back();
+		text.setString(value);
+	}
     
 private:
     sf::Text text;
