@@ -8,8 +8,8 @@
 class UIButton : public sf::Drawable, public sf::Transformable
 {
 public:
-    UIButton(int width, int height)
-    :text("texttext")
+    UIButton(int width, int height, const std::string& buttonText = "")
+    :text(buttonText)
     {
         background.setSize(sf::Vector2f(width,height));
         background.setFillColor(sf::Color::Red);
@@ -21,6 +21,8 @@ public:
         states.blendMode = sf::BlendMultiply;
         target.draw(background);
         target.draw(text);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))
+			execute();
     }
     
     void execute() const

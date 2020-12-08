@@ -26,9 +26,6 @@ public:
     }
     
     std::vector<UIWindow*> windows;
-    
-private:
-    PlanetCreationWindow menu;
 };
 
 #endif /* UserInterface_h */

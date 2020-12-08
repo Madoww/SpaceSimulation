@@ -5,17 +5,21 @@
 #include <SFML/Graphics.hpp>
 #include "Fonts.h"
 
+
 class UIText : public sf::Drawable, public sf::Transformable
 {
 public:
+	UIText()
+	{
+		text.setFont(Fonts::Instance().default_font);
+		text.setCharacterSize(40);
+		text.setFillColor(sf::Color::Blue);
+	}
     UIText(std::string value)
     :value(value)
     {
-        std::cout<<"String created: "<<value<<std::endl;
-        text.setFont(Fonts::Instance().default_font);
-        text.setString(value);
-        text.setCharacterSize(40);
-        text.setFillColor(sf::Color::Blue);
+		UIText();
+		setText(value);
     }
     
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -42,6 +46,7 @@ public:
 		text.setString(value);
 	}
     
+	const std::string& getValue() { return value; }
 private:
     sf::Text text;
     std::string value;

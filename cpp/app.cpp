@@ -1,5 +1,6 @@
 #include "app.h"
 #include "math.h"
+#include "ProgramData.h"
 
 app::app()
 	:m_window(sf::VideoMode(1280, 720, 32), "Space Simulation", sf::Style::Close),view(sf::Vector2f(800,400),sf::Vector2f(1600,900))
@@ -7,6 +8,7 @@ app::app()
 		m_window.setView(view);
 		view.zoom(999999);
 	m_window.setVerticalSyncEnabled(true);
+	ProgramData::window_size = m_window.getSize();
 }
 
 void app::run()

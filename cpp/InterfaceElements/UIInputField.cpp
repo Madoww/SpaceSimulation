@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <cctype>
 #include "UIInputField.h"
 #include "app.h"
 
@@ -11,7 +12,13 @@ void UIInputField::GatherInput(sf::RenderWindow& window)
 			text.erase();
 			return;
 		}
-
+		if (type == Type::Numerical) 
+		{
+			if (!isdigit((char)app::instance().event.text.unicode))
+			{
+				return;
+			}
+		}
 		text.append(app::instance().event.text.unicode);
     }
 }
