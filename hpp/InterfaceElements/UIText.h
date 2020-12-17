@@ -34,6 +34,11 @@ public:
 		text.setString(value);
 	}
 
+	sf::Vector2f getSize()
+	{
+		return sf::Vector2f(text.getGlobalBounds().width, text.getGlobalBounds().height);
+	}
+
 	void append(const char addedValue)
 	{
 		value += addedValue;

@@ -8,7 +8,7 @@ public:
     Fonts()
     {
         //default_font.loadFromFile("/Users/Filip/Documents/code/dark_forest/dark_forest/Sources/Fonts/PixelSplitter.otf");
-        default_font.loadFromFile("C:/PixelSplitter.ttf");
+        default_font.loadFromFile("D:/Projects/Personal/SpaceSimulation/Resources/Fonts/PixelSplitter.ttf");
     }
     Fonts(const Fonts&) = delete;
     Fonts operator=(const Fonts&) = delete;
