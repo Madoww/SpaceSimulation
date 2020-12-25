@@ -11,7 +11,7 @@ class PlanetCreationWindow : public UIWindow
 {
 public:
     PlanetCreationWindow()
-    :UIWindow(400,600, UIWindow::Orientation::top_left), radiusInput(UIInputField::Type::Numerical), weightInput(UIInputField::Type::Numerical),createButton(30,30)
+    :UIWindow(400,600, UIWindow::Orientation::center), radiusInput(UIInputField::Type::Numerical), weightInput(UIInputField::Type::Numerical),createButton(30,30)
     {
 		header.setText("Planet Creation");
 		nameHeader.setText("Name:");
@@ -38,10 +38,6 @@ public:
     
     void draw(sf::RenderWindow& window) override
     {
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-		{
-			InputFieldsManager::Reset();
-		}
         canvas.clear(sf::Color::White);
 		canvas.draw(nameHeader);
         canvas.draw(nameInput);
@@ -55,12 +51,22 @@ public:
         nameInput.GatherInput(window);
 		radiusInput.GatherInput(window);
 		weightInput.GatherInput(window);
+
+		//TODO: move the call
+		PressablesManager::CheckIfAnyPressed();
         
 		(canvas.getTexture());
 		finalRender.setTexture(canvas.getTexture());
 		updateOrientation();
+		UpdateBoundsPositions();
         window.draw(finalRender);
     }
+
+private:
+	void UpdateBoundsPositions()
+	{
+		weightInput.SetBounds(sf::Vector2f(weightHeader.getPosition().x + finalRender.getPosition().x - canvas.getSize().x/2, weightHeader.getPosition().y + finalRender.getPosition().y - canvas.getSize().y/2), sf::Vector2f(300, 40));
+	}
 	UIText header;
 	UIText nameHeader;
 	UIText radiusHeader;

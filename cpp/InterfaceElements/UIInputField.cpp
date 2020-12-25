@@ -22,17 +22,12 @@ void UIInputField::GatherInput(sf::RenderWindow& window)
 		}
 		text.append(app::instance().event.text.unicode);
     }
+}
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{
-		if (sf::Mouse::getPosition(app::instance().getWindow()).x > bounds.getPosition().x && sf::Mouse::getPosition(app::instance().getWindow()).x < bounds.getPosition().x + bounds.getSize().x)
-		{
-			if (sf::Mouse::getPosition(app::instance().getWindow()).y > bounds.getPosition().y && sf::Mouse::getPosition(app::instance().getWindow()).y < bounds.getPosition().y + bounds.getSize().y)
-			{
-				SetActive(true);
-			}
-		}
-	}
+void UIInputField::OnPress()
+{
+	InputFieldsManager::Reset();
+	SetActive(true);
 }
 
 std::vector<UIInputField*> InputFieldsManager::fields;

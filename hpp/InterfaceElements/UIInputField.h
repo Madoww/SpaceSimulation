@@ -4,10 +4,11 @@
 #include <SFML/Graphics.hpp>
 #include <stdlib.h>
 #include <vector>
+#include "Pressable.h"
 
 static class InputFieldsManager;
 
-class UIInputField : public sf::Drawable, public sf::Transformable
+class UIInputField : public sf::Drawable, public sf::Transformable, public Pressable
 {
 public:
 	enum Type
@@ -23,6 +24,8 @@ public:
 		states.transform *= getTransform();
 		target.draw(text, states);
 	}
+
+	void OnPress() override;
 
 	void SetBounds(const sf::Vector2f& position, const sf::Vector2f& size)
 	{
@@ -40,7 +43,7 @@ public:
 	const std::string& getValueAsString() { return text.getValue(); }
 	double getValueAsDouble() { return std::atof(text.getValue().c_str()); }
     private:
-	sf::RectangleShape bounds;
+	
     UIText text;
 	Type type;
 	bool is_active = false;

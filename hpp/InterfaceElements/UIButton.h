@@ -4,8 +4,9 @@
 #include <functional>
 #include <vector>
 #include "UIText.h"
+#include "Pressable.h"
 
-class UIButton : public sf::Drawable, public sf::Transformable
+class UIButton : public sf::Drawable, public sf::Transformable, public Pressable
 {
 public:
     UIButton(int width, int height, const std::string& buttonText = "")
@@ -13,6 +14,8 @@ public:
     {
         background.setSize(sf::Vector2f(width,height));
         background.setFillColor(sf::Color::Red);
+        bounds.setPosition(getPosition());
+        bounds.setSize(sf::Vector2f(width, height));
     }
     
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -24,9 +27,15 @@ public:
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))
 			execute();
     }
+
+    void OnPress() override
+    {
+        execute();
+    }
     
     void execute() const
     {
+        std::cout << "Executing a button call" << std::endl;
         for(auto listener : listeners)
         {
             listener();
